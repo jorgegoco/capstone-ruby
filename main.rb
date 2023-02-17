@@ -67,6 +67,7 @@ class Menu
   private
 
   def exit_app
+    puts 'Closing the Catalog of my things!'
     exit
   end
 end

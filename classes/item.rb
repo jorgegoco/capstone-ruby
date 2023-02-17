@@ -1,4 +1,6 @@
 class Item
+  attr_reader :label
+
   def initialize(publish_date)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
@@ -17,8 +19,9 @@ class Item
     @source = source
   end
 
-  def add_label(label)
+  def label=(label)
     @label = label
+    label.items.push(self) unless label.items.inlude?(self)
   end
 
   def move_to_archive
