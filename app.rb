@@ -1,16 +1,20 @@
 require_relative './classes/musicalbum'
 require_relative './classes/genre'
+require_relative './classes/author'
 require_relative './preserve_musicalbums'
 require_relative './preserve_genres'
+require_relative './preserve_authors'
 
 class App
   def initialize
     @musicalbums = fetch_musicalbums
     @genres = fetch_genres
+    @authors = fetch_authors
   end
 
 include PreserveMusicAlbums
 include PreserveGenres
+include PreserveAuthors
 
   def list_all_books
   end
@@ -50,10 +54,15 @@ include PreserveGenres
     publish_date = accept_input 'Enter publish date[YYYY-MM-DD]:'
     musicalbum = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
     genre = accept_input 'Enter genre[Rock, Pop ...]:'
+    author_first_name = accept_input 'Enter Author first name:'
+    author_last_name = accept_input 'Enter Author last name:'
     newgenre = Genre.new(name: genre)
+    newauthor = Author.new(first_name: author_first_name, last_name: author_last_name)
     musicalbum.genre = newgenre
+    musicalbum.author = newauthor
     @musicalbums.push(musicalbum)
     @genres.push(newgenre) unless @genres.include?(newgenre)
+    @authors.push(newauthor) unless @authors.include?(newauthor)
   end
 
   def add_a_game
@@ -62,6 +71,7 @@ include PreserveGenres
   def exit_app
     store_musicalbums(@musicalbums)
     store_genres(@genres)
+    store_authors(@authors)
     puts 'Closing the Catalog of my things!'
     exit
   end
