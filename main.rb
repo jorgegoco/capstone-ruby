@@ -43,23 +43,12 @@ class Menu
         @app.add_a_music_album
       when 9
         @app.add_a_game
+      when 10
+        @app.exit_app  
       else
-        exit_app
+        puts 'Invalid input!!'
       end
     end
-  end
-
-  private
-
-  def exit_app
-    # store_books(@app.books)
-    store_musicalbums(@app.musicalbums)
-    # store_games(@app.games)
-    store_genres(@app.genres)
-    # store_labels(@app.labels)
-    # store_authors(@app.authors)
-    puts 'Closing the Catalog of my things!'
-    exit
   end
 end
 
