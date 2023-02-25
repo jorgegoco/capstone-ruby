@@ -10,21 +10,15 @@ class Menu
         Please choose an option by entering a number:
         1 - List all books
         2 - List all music albums
-        3 - List all movies
-        4 - List of games
-        5 - List all genres
-        6 - List all labels
-        7 - List all authors
-        8 - List all sources
-        9 - Add a book
-        10 - Add a music album
-        11 - Add a movie
-        12 - Add a game
-        13 - Exit"
+        3 - List of games
+        4 - List all genres
+        5 - List all labels
+        6 - List all authors
+        7 - Add a book
+        8 - Add a music album
+        9 - Add a game
+        10 - Exit"
   end
-
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
 
   def main_menu
     loop do
@@ -36,24 +30,18 @@ class Menu
       when 2
         @app.list_all_music_albums
       when 3
-        @app.list_all_movies
-      when 4
         @app.list_of_games
-      when 5
+      when 4
         @app.list_all_genres
-      when 6
+      when 5
         @app.list_all_labels
-      when 7
+      when 6
         @app.list_all_authors
-      when 8
-        @app.list_all_sources
-      when 9
+      when 7
         @app.add_a_book
-      when 10
+      when 8
         @app.add_a_music_album
-      when 11
-        @app.add_a_movie
-      when 12
+      when 9
         @app.add_a_game
       else
         exit_app
@@ -61,12 +49,15 @@ class Menu
     end
   end
 
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
-
   private
 
   def exit_app
+    store_books(@app.books)
+    store_albums(@app.albums)
+    store_games(@app.games)
+    store_genres(@app.genres)
+    store_labels(@app.labels)
+    store_authors(@app.authors)
     puts 'Closing the Catalog of my things!'
     exit
   end

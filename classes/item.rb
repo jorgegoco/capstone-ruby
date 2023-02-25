@@ -1,10 +1,10 @@
 class Item
-  attr_reader :label
+  attr_reader :label, :publish_date
 
   def initialize(publish_date)
     @id = Random.rand(1..1000)
     @publish_date = publish_date
-    @archived = archived
+    @archived = false
   end
 
   def add_genre(genre)
@@ -21,7 +21,7 @@ class Item
 
   def label=(label)
     @label = label
-    label.items.push(self) unless label.items.inlude?(self)
+    label.items.push(self) unless label.items.include?(self)
   end
 
   def move_to_archive
