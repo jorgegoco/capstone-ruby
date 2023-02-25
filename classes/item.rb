@@ -1,22 +1,22 @@
-class Item
-  attr_reader :label, :publish_date
+require 'date'
 
-  def initialize(publish_date)
+class Item
+  attr_reader :publish_date, :genre
+
+  def initialize(publish_date:, archived: false)
     @id = Random.rand(1..1000)
-    @publish_date = publish_date
+    @publish_date = Date.strptime(publish_date, '%Y-%m-%d')
     @archived = false
   end
 
-  def add_genre(genre)
+  def genre=(genre)
     @genre = genre
+    genre.items.push(self) unless genre.items.include?(self)
   end
 
-  def add_author(author)
+  def author=(author)
     @author = author
-  end
-
-  def add_source(source)
-    @source = source
+    author.items.push(self) unless author.items.include?(self)
   end
 
   def label=(label)
@@ -25,12 +25,12 @@ class Item
   end
 
   def move_to_archive
-    @archived = true if can_be_archived?
+    @archived = can_be_archived?
   end
 
   private
 
   def can_be_archived?
-    true
+    ((Date.today << 120) <=> @publish_date).positive?
   end
 end
