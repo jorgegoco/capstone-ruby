@@ -20,6 +20,9 @@ class Menu
         10 - Exit"
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
+
   def main_menu
     loop do
       text_menu
@@ -44,13 +47,16 @@ class Menu
       when 9
         @app.add_a_game
       when 10
-        @app.exit_app  
+        @app.exit_app
       else
         puts 'Invalid input!!'
       end
     end
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/MethodLength
 
 def main
   puts 'Welcome to Catalog of my things!'

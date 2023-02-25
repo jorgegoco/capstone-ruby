@@ -5,7 +5,7 @@ module PreserveAuthors
     authors_array = []
     authors_file = 'authors.json'
     return authors_array if !File.exist?(authors_file) || File.read(authors_file) == ''
-    
+
     JSON.parse(File.read(authors_file)).each do |author|
       authors_array << Author.new(first_name: author['first_name'], last_name: author['last_name'])
     end

@@ -12,11 +12,12 @@ class App
     @authors = fetch_authors
   end
 
-include PreserveMusicAlbums
-include PreserveGenres
-include PreserveAuthors
+  include PreserveMusicAlbums
+  include PreserveGenres
+  include PreserveAuthors
 
   def list_all_books
+    puts 'Hello'
   end
 
   def list_all_music_albums
@@ -30,6 +31,7 @@ include PreserveAuthors
   end
 
   def list_all_games
+    puts 'Hello'
   end
 
   def list_all_genres
@@ -41,12 +43,19 @@ include PreserveAuthors
   end
 
   def list_all_labels
+    puts 'Hello'
   end
 
   def list_all_authors
+    puts 'Authors'
+    puts '-' * 50
+    @authors.each do |author|
+      puts "#{author.first_name}\t\t#{author.last_name}"
+    end
   end
 
   def add_a_book
+    puts 'Hello'
   end
 
   def add_a_music_album
@@ -66,8 +75,9 @@ include PreserveAuthors
   end
 
   def add_a_game
+    puts 'Hello'
   end
-  
+
   def exit_app
     store_musicalbums(@musicalbums)
     store_genres(@genres)

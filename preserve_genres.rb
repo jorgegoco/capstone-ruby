@@ -5,7 +5,7 @@ module PreserveGenres
     genres_array = []
     genres_file = 'genres.json'
     return genres_array if !File.exist?(genres_file) || File.read(genres_file) == ''
-    
+
     JSON.parse(File.read(genres_file)).each do |genre|
       genres_array << Genre.new(name: genre['name'])
     end
