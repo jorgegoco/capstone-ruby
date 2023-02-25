@@ -3,21 +3,30 @@ class App
     @books = fetch_books
     @albums = fetch_albums
     @games = fetch_games
-    @genres = fetch_genres
-    @labels = fetch_labels
-    @authors = fetch_authors
   end
 
   def list_all_books
   end
 
   def list_all_music_albums
+    puts '*' * 100
+    puts "On Spotify\tPublished Date\tGenre "
+    puts '-' * 50
+    puts 'There is no Album registered yet.' if @musicalbums.empty?
+    @musicalbums.each do |musicalbum|
+      puts "#{musicalbum.on_spotify}\t\t#{musicalbum.publish_date}\t\t#{musicalbum.genre.name} "
+    end
   end
 
   def list_all_games
   end
 
   def list_all_genres
+    puts 'Genres'
+    puts '-' * 50
+    @genres.each do |genre|
+      puts genre.name
+    end
   end
 
   def list_all_labels
