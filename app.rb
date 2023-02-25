@@ -1,9 +1,13 @@
 class App
   def initialize
-    @books = fetch_books
-    @albums = fetch_albums
-    @games = fetch_games
+    # @books = fetch_books
+    @musicalbums = fetch_musicalbums
+    @genres = fetch_genres
+    # @games = fetch_games
   end
+
+include PreserveMusicAlbums
+include PreserveGenres
 
   def list_all_books
   end

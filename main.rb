@@ -52,12 +52,12 @@ class Menu
   private
 
   def exit_app
-    store_books(@app.books)
-    store_albums(@app.albums)
-    store_games(@app.games)
+    # store_books(@app.books)
+    store_musicalbums(@app.musicalbums)
+    # store_games(@app.games)
     store_genres(@app.genres)
-    store_labels(@app.labels)
-    store_authors(@app.authors)
+    # store_labels(@app.labels)
+    # store_authors(@app.authors)
     puts 'Closing the Catalog of my things!'
     exit
   end
