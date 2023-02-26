@@ -6,6 +6,7 @@ require_relative './preserve_musicalbums'
 require_relative './preserve_genres'
 require_relative './preserve_authors'
 require_relative './preserve_labels'
+require_relative './helper_functions'
 
 class App
   def initialize
@@ -19,6 +20,7 @@ class App
   include PreserveGenres
   include PreserveAuthors
   include PreserveLabels
+  include HelperFunctions
 
   def list_all_books
     puts 'Hello'
@@ -28,7 +30,7 @@ class App
     puts '*' * 100
     puts "On Spotify\t\tPublished Date\t\tGenre "
     puts '-' * 50
-    puts 'There is no Album registered yet.' if @musicalbums.empty?
+    puts 'There is no Music Albums registered yet.' if @musicalbums.empty?
     @musicalbums.each do |musicalbum|
       puts "#{musicalbum.on_spotify}\t\t#{musicalbum.publish_date}\t\t#{musicalbum.genre.name} "
     end
@@ -67,7 +69,7 @@ class App
   end
 
   def add_a_music_album
-    on_spotify = accept_input 'Enter if it is available on spotify [true, false]:'
+    on_spotify = accept_on_spotify 'Enter if it is available on spotify [true, false]:'
     publish_date = accept_input 'Enter publish date[YYYY-MM-DD]:'
     musicalbum = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
     genre = accept_input 'Enter genre[Rock, Pop ...]:'
@@ -98,10 +100,5 @@ class App
     store_labels(@labels)
     puts 'Closing the Catalog of my things!'
     exit
-  end
-
-  def accept_input(msg)
-    puts msg
-    gets.chomp
   end
 end
