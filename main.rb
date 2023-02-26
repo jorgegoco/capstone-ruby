@@ -33,7 +33,7 @@ class Menu
       when 2
         @app.list_all_music_albums
       when 3
-        @app.list_of_games
+        @app.list_all_games
       when 4
         @app.list_all_genres
       when 5
