@@ -17,17 +17,21 @@ module HelperFunctions
     data
   end
 
+  # rubocop:disable Style/RescueStandardError
+
   def accept_date(msg)
     begin
-      puts 'Enter publish date[YYYY-MM-DD]:'
-      data = gets.chomp 
+      puts msg
+      data = gets.chomp
       Date.strptime(data, '%Y-%m-%d')
     rescue
       puts 'Invalid date!!'
       retry
     end
-    data 
+    data
   end
+
+  # rubocop:enable Style/RescueStandardError
 
   def accept_on_cover_state(msg)
     puts msg
