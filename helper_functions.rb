@@ -28,4 +28,15 @@ module HelperFunctions
     end
     data 
   end
+
+  def accept_on_cover_state(msg)
+    puts msg
+    data = gets.chomp.downcase
+    unless ['bad', 'good', ''].include? data
+      puts msg
+      puts 'Press Enter for no value!!'
+      data = gets.chomp.downcase
+    end
+    data
+  end
 end

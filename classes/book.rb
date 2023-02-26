@@ -1,13 +1,15 @@
+require_relative './item'
+
 class Book < Item
-  def initialize(publish_date, publisher, cover_state)
-    super(publish_date)
+  def initialize(publish_date:, publisher:, cover_state:)
+    super(publish_date: publish_date)
     @publisher = publisher
     @cover_state = cover_state
   end
 
-  def can_be_archived?
-    return true if super == true || cover_state == 'bad'
+  private
 
-    false
+  def can_be_archived?
+    super || @cover_state == 'bad'
   end
 end

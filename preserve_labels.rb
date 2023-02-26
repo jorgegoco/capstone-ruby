@@ -7,7 +7,7 @@ module PreserveLabels
     return labels_array if !File.exist?(labels_file) || File.read(labels_file) == ''
 
     JSON.parse(File.read(labels_file)).each do |label|
-      labels_array << label.new(title: label['title'], color: label['color'])
+      labels_array << Label.new(title: label['title'], color: label['color'])
     end
 
     labels_array
