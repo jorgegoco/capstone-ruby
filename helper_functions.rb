@@ -1,3 +1,5 @@
+require 'date'
+
 module HelperFunctions
   def accept_input(msg)
     puts msg
@@ -15,4 +17,15 @@ module HelperFunctions
     data
   end
 
+  def accept_date(msg)
+    begin
+      puts 'Enter publish date[YYYY-MM-DD]:'
+      data = gets.chomp 
+      Date.strptime(data, '%Y-%m-%d')
+    rescue
+      puts 'Invalid date!!'
+      retry
+    end
+    data 
+  end
 end

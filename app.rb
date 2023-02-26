@@ -69,8 +69,8 @@ class App
   end
 
   def add_a_music_album
-    on_spotify = accept_on_spotify 'Enter if it is available on spotify [true, false]:'
-    publish_date = accept_input 'Enter publish date[YYYY-MM-DD]:'
+    on_spotify = accept_on_spotify('Enter if it is available on spotify [true, false]:')
+    publish_date = accept_date('Enter publish date[YYYY-MM-DD]:')
     musicalbum = MusicAlbum.new(publish_date: publish_date, on_spotify: on_spotify)
     genre = accept_input 'Enter genre[Rock, Pop ...]:'
     author_first_name = accept_input 'Enter Author first name:'
